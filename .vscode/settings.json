@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "uart.h": "c",
+        "esp_rom_sys.h": "c",
+        "freertos.h": "c",
+        "projdefs.h": "c",
+        "semphr.h": "c",
+        "task.h": "c",
+        "i2c.h": "c",
+        "ets_sys.h": "c",
+        "sdkconfig.h": "c",
+        "gpio.h": "c",
+        "stddef.h": "c",
+        "ds18b20.h": "c"
+    },
+    "idf.adapterTargetName": "esp32s3",
+    "idf.flashType": "UART",
+    "idf.port": "/dev/ttyUSB0"
+}
