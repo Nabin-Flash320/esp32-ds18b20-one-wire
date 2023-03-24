@@ -26,6 +26,10 @@
 #define DS18B20_TEMPERATURE_12_BIT_RESOLUTION       0x7F
 
 
+#define DS18B20_FAMILY_CODE                         0x28
+
+
+// ROM commands for DS18B20
 #define DS18B20_ROM_COMMAND_SEARCH_ROM              0xF0
 #define DS18B20_ROM_COMMAND_READ_ROM                0x33
 #define DS18B20_ROM_COMMAND_MATCH_ROM               0x55
@@ -41,12 +45,16 @@
 #define DS18B20_FUNCTION_COMMAND_READ_POWER_SUPPLY      0xB4
 
 
+#define DS18B20_TH_HIGHER_THRESHOLD                     42      // 42 degree celcius
+#define DS18B20_TL_LOWER_THRESHOLD                      -10     // -10 degree celcius
 
 void ds18b20_init();
-esp_err_t ds18b20_write_data(uint8_t* data);
-esp_err_t ds18b20_read_data(uint8_t* data);
-bool ds18b20_reset_line();
-esp_err_t ds18b20_set_resolution(uint8_t resolution);
+esp_err_t ds18b20_write_data(uint8_t* data, uint32_t gpio_pin);
+esp_err_t ds18b20_read_data(uint8_t* data, uint32_t gpio_pin);
+bool ds18b20_reset_line(uint32_t gpio_pin);
+esp_err_t ds18b20_write_to_scratchpad(uint8_t th_val, uint8_t tl_val, uint8_t resolution, uint8_t gpio_pin);
+bool ds18b20_recognize_device(uint32_t gpio_pin);
+esp_err_t ds18b20_get_temperature_data(uint8_t* temperature_data, uint32_t gpio_pin);
 
 #endif //_DS18B20_H_
 

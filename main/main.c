@@ -44,17 +44,29 @@ void reset_task(void* params)
 
 void app_main()
 {
-    while (1)
+    do
     {
-        if(ds18b20_reset_line())
+        if(ds18b20_reset_line(DEMO_PIN))
         {
-            printf("Present.\n");
+            // printf("Present.\n");
+            if(ds18b20_recognize_device(DEMO_PIN))
+            {
+                printf("DS18B20 Found!!\n");
+                uint8_t temp_data = 0;
+                ds18b20_write_to_scratchpad(DS18B20_TH_HIGHER_THRESHOLD, DS18B20_TL_LOWER_THRESHOLD, 12, DEMO_PIN);
+                ds18b20_get_temperature_data(&temp_data, DEMO_PIN);
+            }
+            else 
+            {
+                printf("No DS18B20 device found!!");
+            }
         }  
         else 
         {
             printf("Not present\n");
         } 
-    }
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }while (1);
     
     // xTaskCreate(reset_task, "reset_task", 2*2048, NULL, 0, NULL);
     
