@@ -5,7 +5,10 @@
 #include "esp_log.h"
 #include "driver/gpio.h"
 #include "string.h"
+#include "sdkconfig.h"
 
+
+static uint8_t ds18b20_calculate_crc(const uint8_t* data, uint8_t len);
 
 void ds18b20_init()
 {
@@ -131,18 +134,29 @@ esp_err_t ds18b20_get_temperature_data(uint8_t* temperature_data, uint32_t gpio_
         ds18b20_read_data(&ds18b20_reserved_reg_3, gpio_pin);
         ds18b20_read_data(&ds18b20_crc, gpio_pin);
 
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The ds18b20_temperature_lsb is %d", GET_LINE, __func__, ds18b20_temperature_lsb);
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The ds18b20_temperature_msb is %d", GET_LINE, __func__, ds18b20_temperature_msb);
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The ds18b20_th_value is %d", GET_LINE, __func__, ds18b20_th_value);
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The ds18b20_tl_data is %d", GET_LINE, __func__, ds18b20_tl_data);
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The ds18b20_config_data is 0x%X", GET_LINE, __func__, ds18b20_config_data);
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The CRC is 0x%X", GET_LINE, __func__, ds18b20_crc);
+        uint8_t ds18b20_scratchpad_data_array[8] = {
+            ds18b20_temperature_lsb,
+            ds18b20_temperature_msb,
+            ds18b20_th_value,
+            ds18b20_tl_data,
+            ds18b20_config_data,
+            ds18b20_reserved_reg_1,
+            ds18b20_reserved_reg_2,
+            ds18b20_reserved_reg_3,
+        };
 
-        float temp=0;
-        temp=(float)(ds18b20_temperature_lsb+(ds18b20_temperature_msb*256.0))/16.0;
-
-        ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The CRC is %f", GET_LINE, __func__, temp);
-
+        uint8_t calculated_crc = ds18b20_calculate_crc(ds18b20_scratchpad_data_array, 8);
+        if(calculated_crc != ds18b20_crc)
+        {
+            ESP_LOGE(DS18B20_TAG, "(%d, func: %s) CRC not verified!!", GET_LINE, __func__);
+            error = ESP_FAIL;
+        }
+        else 
+        {
+            float temp=0;
+            temp=(float)(ds18b20_temperature_lsb+(ds18b20_temperature_msb*256.0))/16.0;
+            ESP_LOGI(DS18B20_TAG, "(%d, func: %s) The temperature in degree celcuis is %f", GET_LINE, __func__, temp);
+        }
     }
     else 
     {
@@ -150,3 +164,17 @@ esp_err_t ds18b20_get_temperature_data(uint8_t* temperature_data, uint32_t gpio_
     }
     return error;
 }
+
+
+static uint8_t ds18b20_calculate_crc(const uint8_t* data, uint8_t len)
+{
+    uint8_t crc = 0;
+    uint8_t length = len;
+    while(length--)
+    {
+        crc = *data++ ^ crc;  
+		crc = pgm_read_byte(dscrc2x16_table + (crc & 0x0f)) ^ pgm_read_byte(dscrc2x16_table + 16 + ((crc >> 4) & 0x0f));
+    }
+    return crc;
+}
+

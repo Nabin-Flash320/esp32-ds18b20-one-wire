@@ -48,6 +48,16 @@
 #define DS18B20_TH_HIGHER_THRESHOLD                     42      // 42 degree celcius
 #define DS18B20_TL_LOWER_THRESHOLD                      -10     // -10 degree celcius
 
+#define pgm_read_byte(addr)   (*(const unsigned char *)(addr))
+
+static const uint8_t dscrc2x16_table[] = {
+	0x00, 0x5E, 0xBC, 0xE2, 0x61, 0x3F, 0xDD, 0x83,
+	0xC2, 0x9C, 0x7E, 0x20, 0xA3, 0xFD, 0x1F, 0x41,
+	0x00, 0x9D, 0x23, 0xBE, 0x46, 0xDB, 0x65, 0xF8,
+	0x8C, 0x11, 0xAF, 0x32, 0xCA, 0x57, 0xE9, 0x74
+};
+
+
 void ds18b20_init();
 esp_err_t ds18b20_write_data(uint8_t* data, uint32_t gpio_pin);
 esp_err_t ds18b20_read_data(uint8_t* data, uint32_t gpio_pin);
