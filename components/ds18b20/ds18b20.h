@@ -58,7 +58,6 @@ static const uint8_t dscrc2x16_table[] = {
 };
 
 
-void ds18b20_init();
 esp_err_t ds18b20_write_data(uint8_t* data, uint32_t gpio_pin);
 esp_err_t ds18b20_read_data(uint8_t* data, uint32_t gpio_pin);
 bool ds18b20_reset_line(uint32_t gpio_pin);

@@ -673,13 +673,6 @@
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/wifi_provisioning/CMakeFiles/install.dir
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/wifi_provisioning/CMakeFiles/install/local.dir
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/wifi_provisioning/CMakeFiles/install/strip.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/__idf_one-wire.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/edit_cache.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/rebuild_cache.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/list_install_components.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/install.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/install/local.dir
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/CMakeFiles/install/strip.dir
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ds18b20/CMakeFiles/__idf_ds18b20.dir
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ds18b20/CMakeFiles/edit_cache.dir
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ds18b20/CMakeFiles/rebuild_cache.dir

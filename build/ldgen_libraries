@@ -70,6 +70,5 @@
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/usb/libusb.a
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ulp/libulp.a
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
-/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/libone-wire.a
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ds18b20/libds18b20.a
 /home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/main/libmain.a

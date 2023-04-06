@@ -10,11 +10,6 @@
 
 static uint8_t ds18b20_calculate_crc(const uint8_t* data, uint8_t len);
 
-void ds18b20_init()
-{
-    ESP_LOGI(DS18B20_TAG, "(%d, func: %s)", GET_LINE, __func__);
-    onewire_init();
-}
 
 esp_err_t ds18b20_write_data(uint8_t* data, uint32_t gpio_pin)
 {

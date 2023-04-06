@@ -121,7 +121,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/tinyusb/cmake_install.cmake")
   include("/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ulp/cmake_install.cmake")
   include("/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/wifi_provisioning/cmake_install.cmake")
-  include("/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/one-wire/cmake_install.cmake")
   include("/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/ds18b20/cmake_install.cmake")
   include("/home/nds/Programs/c-workspace/esp32-ds18b20-one-wire/build/esp-idf/main/cmake_install.cmake")
 

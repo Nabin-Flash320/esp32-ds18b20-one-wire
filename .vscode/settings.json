@@ -12,7 +12,8 @@
         "gpio.h": "c",
         "stddef.h": "c",
         "ds18b20.h": "c",
-        "crc.h": "c"
+        "crc.h": "c",
+        "onewire.h": "c"
     },
     "idf.adapterTargetName": "esp32s3",
     "idf.flashType": "UART",
